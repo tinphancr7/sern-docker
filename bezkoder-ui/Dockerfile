@@ -14,6 +14,7 @@ RUN npm run build
 # Stage 2
 FROM nginx:1.17.0-alpine
 
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf 
 COPY --from=build-stage /bezkoder-ui/build /usr/share/nginx/html
 EXPOSE $REACT_DOCKER_PORT
 
